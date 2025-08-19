@@ -12,12 +12,11 @@
 			<item value="org.eclipse.ui.actions"/>
 		</list>
 		<list key="textEntries">
-			<item value="3"/>
+			<item value="2"/>
 		</list>
 		<list key="textArray">
-			<item value="gett"/>
-			<item value="get"/>
 			<item value="ge"/>
+			<item value="gett"/>
 		</list>
 	</section>
 </section>

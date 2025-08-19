@@ -7,5 +7,7 @@
     <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula13.Baralho"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao05.aula11.Carta"/>
 </qualifiedTypeNameHistroy>
