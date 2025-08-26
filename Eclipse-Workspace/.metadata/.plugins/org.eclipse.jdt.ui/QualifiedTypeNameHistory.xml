@@ -4,7 +4,6 @@
     <fullyQualifiedTypeName name="java.util.Locale"/>
     <fullyQualifiedTypeName name="java.lang.Comparable"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao04.aula10.CalculoBaskara"/>
-    <fullyQualifiedTypeName name="java.lang.String"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula13.Baralho"/>
     <fullyQualifiedTypeName name="java.util.Random"/>
@@ -22,4 +21,9 @@
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="java.lang.Exception"/>
     <fullyQualifiedTypeName name="java.lang.RuntimeException"/>
+    <fullyQualifiedTypeName name="java.lang.String"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula15.DocumentoException"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.secao08.aula15.EnderecoException"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.rafaelbey.test.ConectorBancoDadosTest"/>
+    <fullyQualifiedTypeName name="br.com.senaisp.bauru.rafaelbey.classes.ConectorBancoDados"/>
 </qualifiedTypeNameHistroy>
