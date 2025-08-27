@@ -1,0 +1,1 @@
+delite from produto 
