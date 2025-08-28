@@ -45,5 +45,8 @@ import java.sql.Statement;
 	public String getConnStr() {
 		return connStr;
 	}
+	public Connection getConnection() {
+		return conn;
+	}
 }
 
