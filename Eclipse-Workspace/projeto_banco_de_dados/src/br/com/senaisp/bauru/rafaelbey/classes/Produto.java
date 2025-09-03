@@ -9,154 +9,171 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Produto {
-    private int id;
-    private String descricao;
-    private double saldo;
-    private double preco;
-    private ConectorBancoDados conn;
-    //Constructor
-    public Produto(String descricao, double saldo, double preco) throws SQLException {
-    	this.id = 0;
-    	this.descricao = descricao;
-    	this.saldo = saldo;
-    	this.preco = preco;
-    	conn = ConectorBancoDados.getInstancia();
-    }
+	private int id;
+	private String descricao;
+	private double saldo;
+	private double preco;
+	private ConectorBancoDados conn;
+
+	// Constructor
+	public Produto(String descricao, double saldo, double preco) throws SQLException {
+		this.id = 0;
+		this.descricao = descricao;
+		this.saldo = saldo;
+		this.preco = preco;
+		conn = ConectorBancoDados.getInstancia();
+	}
+
+	public Produto() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public double getSaldo() {
 		return saldo;
 	}
+
 	public void setSaldo(double saldo) {
 		this.saldo = saldo;
 	}
+
 	public double getPreco() {
 		return preco;
 	}
+
 	public void setPreco(double preco) {
 		this.preco = preco;
 	}
+
 	public int getId() {
 		return id;
 	}
+
 	public ConectorBancoDados getConn() {
 		return conn;
 	}
+
 	private void setId(int value) {
 		id = value;
 	}
-	//Metodos
-	public void atualizarBanco() { //save()
-		String sql = "update prodtudo set descricao=? , saldo = ?, preco = ?, where id = ?";
-		//Para salvar o registro, o id deve ser maior que zero
-		if (id>0) {
+
+	// Métodos
+	public void atualizarBanco() { // save()
+		String sql = "update produto set descricao = ?, " + "saldo = ?, preco = ? where id = ?";
+		// Para salvar o registro, o id deve ser maior que zero
+		if (id > 0) {
 			try {
 				PreparedStatement stmt = conn.getConnection().prepareStatement(sql);
-			    //Passando os parametros para o sql
+				// Passando os parâmetros para o sql
 				stmt.setString(1, getDescricao());
 				stmt.setDouble(2, getSaldo());
 				stmt.setDouble(3, getPreco());
 				stmt.setInt(4, id);
-				//Executando a query
+				// Executando a query
 				int numLin = stmt.executeUpdate();
 				System.out.println("Foram afetadas " + numLin + " linhas");
-				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
+
 	public void apagarRegistro() {
-		String sql = "delete from prodtudo where id = ?";
-		//Para salvar o registro, o id deve ser maior que zero
-		if (id>0) {
+		String sql = "delete from produto where id = ?";
+		// Para salvar o registro, o id deve ser maior que zero
+		if (id > 0) {
 			try {
 				PreparedStatement stmt = conn.getConnection().prepareStatement(sql);
-			    //Passando os parametros para o sql
+				// Passando os parâmetros para o sql
 				stmt.setInt(1, id);
-				//Executando a query
+				// Executando a query
 				int numLin = stmt.executeUpdate();
 				System.out.println("Foram afetadas " + numLin + " linhas");
-				//Limpando os conteudos do objeto
+				//Limpando os conteúdos do objeto
 				descricao = null;
 				preco = 0;
 				saldo = 0;
 				id = 0;
-				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 	}
-	//Metodos estaticos
- 	public static Produto create(String descricao, double saldo, double preco) throws SQLException {
+
+	// Métodos estáticos
+	public static Produto create(String descricao, double saldo, double preco) throws SQLException {
 		Produto prd = new Produto(descricao, saldo, preco);
-		//Disparando o sql para inserir o registro
+		// Disparando o sql para inserir o registro
 		Connection co = prd.getConn().getConnection();
-		String sql = "Insert into produto(descricao,saldo,preco)" + "values (?, ?, ?)";
-		//Preparando para executar
-	    PreparedStatement stmt = co.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-	    //Setar os valores das ?
-	    stmt.setString(1, descricao);
-	    stmt.setDouble(2, saldo);
-	    stmt.setDouble(3, preco);
-	    //Disparando o sql
-	    int linhasAfetadas = stmt.executeUpdate();
-	    System.out.println("Insei "+ linhasAfetadas + " no banco");
-	    //obtendo o id gerado
-	    ResultSet res = stmt.getGeneratedKeys();
-	    res.next();
-	    //obtendo o valor do Id e sentando no field id do Produto
-	    prd.setId(res.getInt(1));
+		String sql = "insert into produto(descricao,saldo,preco) " + "values (?, ?, ?)";
+		// Preparando para executar
+		PreparedStatement stmt = co.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		// Setar os valores das ?
+		stmt.setString(1, descricao);
+		stmt.setDouble(2, saldo);
+		stmt.setDouble(3, preco);
+		// Disparando o sql
+		int linhasAfetadas = stmt.executeUpdate();
+		System.out.println("Inseri " + linhasAfetadas + " no banco");
+		// Obtendo o id gerado
+		ResultSet res = stmt.getGeneratedKeys();
+		res.next();
+		// Obtendo o valor do Id e setando no field Id do Produto
+		prd.setId(res.getInt(1));
 		return prd;
 	}
-	public static List<Produto> listarProdutos(){
+
+	public static List<Produto> listarProdutos() {
 		ArrayList<Produto> prd = new ArrayList<Produto>();
 		try {
 			Connection co = ConectorBancoDados.getInstancia().getConnection();
-			String sql = "select id, descricao, saldo," + "preco from produto order by id";
+			String sql = "select id, descricao, saldo, " + " preco from produto order by id";
 			PreparedStatement stmt = co.prepareStatement(sql);
-			//Disparando o sql de consulta
+			// Disparando o sql de consulta
 			ResultSet rs = stmt.executeQuery();
 			while (rs.next()) {
-				Produto prod =parseResultado(rs);
-                prd.add(prod);				
+				Produto prod = parseResultado(rs);
+				prd.add(prod);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		//Devolvendo a lista de produtos ou vazio
+		// Devolvendo a lista de produtos ou vazio
 		return prd;
 	}
-	//Consultar um produto por id
+
+	// Consultar um produto pelo Id
 	public static Produto consultarProdutoPorId(int pId) {
 		Produto ret = null;
 		try {
 			Connection conn = ConectorBancoDados.getInstancia().getConnection();
-			String sql = "select id, descricao, saldo, preco from produto where id = ?";
+			String sql = "select id, descricao, saldo, preco " + "from produto where id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			//Atribuindo o id para disparar a query
+			// Atribuindo o id para disparar a query
 			stmt.setInt(1, pId);
 			ResultSet rs = stmt.executeQuery();
-			if (rs.next())
+			if (rs.next()) {
 				ret = parseResultado(rs);
-			
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return ret;
 	}
-	
+
 	private static Produto parseResultado(ResultSet rs) throws SQLException {
 		Produto prod = new Produto(rs.getString(2), rs.getDouble(3), rs.getDouble(4));
 		prod.setId(rs.getInt(1));
-        return prod;
+		return prod;
 	}
 }

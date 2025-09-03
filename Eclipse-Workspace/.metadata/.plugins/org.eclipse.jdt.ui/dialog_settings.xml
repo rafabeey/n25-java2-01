@@ -8,7 +8,7 @@
 	<item key="TypeHierarchyViewPart.qualifiednames" value="false"/>
 	<item key="TypeHierarchyViewPart.linkeditors" value="false"/>
 	<item key="TypeHierarchyViewPart.orientation" value="3"/>
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\javalibs\jdbc_libraries"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\javalibs\javafx_libraries\javafx-sdk-17.0.16\lib"/>
 	<section name="org.eclipse.jdt.internal.ui.packageview.PackageExplorerPart">
 		<item key="group_libraries" value="true"/>
 		<item key="layout" value="2"/>
@@ -86,6 +86,6 @@
 		<item key="pageIndex" value="2"/>
 	</section>
 	<section name="ClasspathContainerSelectionPage">
-		<item key="index" value="8"/>
+		<item key="index" value="10"/>
 	</section>
 </section>

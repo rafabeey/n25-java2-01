@@ -37,4 +37,7 @@
     <fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
     <fullyQualifiedTypeName name="java.util.InputMismatchException"/>
     <fullyQualifiedTypeName name="br.com.senaisp.bauru.rafaelbey.classes.Produto"/>
+    <fullyQualifiedTypeName name="javax.management.InvalidApplicationException"/>
+    <fullyQualifiedTypeName name="javafx.application.Application"/>
+    <fullyQualifiedTypeName name="javafx.scene.control.Button"/>
 </qualifiedTypeNameHistroy>

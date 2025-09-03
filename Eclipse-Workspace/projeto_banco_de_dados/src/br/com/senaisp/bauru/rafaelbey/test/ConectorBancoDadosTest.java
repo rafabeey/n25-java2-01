@@ -7,10 +7,11 @@ import br.com.senaisp.bauru.rafaelbey.classes.ConectorBancoDados;
 public class ConectorBancoDadosTest {
 
 	public static void main(String[] args) {
+
 		try {
 			ConectorBancoDados conn = ConectorBancoDados.getInstancia();
 			System.out.println(conn.getConnStr());
-			
+
 			ConectorBancoDados conn2 = ConectorBancoDados.getInstancia();
 			System.out.println(conn2.getConnStr());
 			
